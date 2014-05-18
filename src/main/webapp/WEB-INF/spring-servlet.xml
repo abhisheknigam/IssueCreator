@@ -18,6 +18,13 @@
  
     <context:annotation-config />
     <context:component-scan base-package="net.anigam.jmeter" />
+ 	
+ 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	  <property name="interceptors">
+	    <ref bean="authenticationInterceptor"/>
+	  </property>
+	 </bean>
  
     <bean id="jspViewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,7 +33,9 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
- 
+ 	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+ 		<property name="order"><value>1</value></property>
+	</bean>
     <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:messages" />

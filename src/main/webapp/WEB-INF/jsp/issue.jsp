@@ -1,61 +1,55 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+
+<html lang="en">
 <head>
-    <title>Spring 3 MVC Series - Issue Tracker</title>
+<meta charset="utf-8">
+<title>Jira Emulator</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.uniform.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function(){
+        $("input:checkbox, input:radio, input:file, select").uniform();
+      });
+    </script>
 </head>
 <body>
- 
-<h2>Contact Manager</h2>
- 
-<form:form method="post" action="add.html" commandName="contact">
- 
-    <table>
-    <tr>
-        <td><form:label path="firstname"><spring:message code="label.firstname"/></form:label></td>
-        <td><form:input path="firstname" /></td> 
-    </tr>
-    <tr>
-        <td><form:label path="lastname"><spring:message code="label.lastname"/></form:label></td>
-        <td><form:input path="lastname" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="email"><spring:message code="label.email"/></form:label></td>
-        <td><form:input path="email" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="telephone"><spring:message code="label.telephone"/></form:label></td>
-        <td><form:input path="telephone" /></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <input type="submit" value="<spring:message code="label.addcontact"/>"/>
-        </td>
-    </tr>
-</table>  
+<article>
+<h1>Issue DDL and DML Manager</h1>
+<form:form method="post" action="add.html" commandName="issue">
+	<ul>
+        <li>
+			<h3><form:label class="label" path="number"><spring:message code="label.number"/></form:label></h3>
+			<form:input size="40" path="number" />
+        </li>
+       <li>
+        	<h3><form:label class="label" path="description" ><spring:message code="label.description"/></form:label></h3>
+            <form:textarea class="textarea" style="height:50px" cols="80" rows="3" path="description"/>
+		</li>
+       <li>
+        	<h3><form:label class="label" path="ddlChanges" ><spring:message code="label.ddlChanges"/></form:label></h3>
+           <form:textarea class="textarea" cols="80" rows="10" path="ddlChanges"/>
+		</li>
+        <li>
+        	<h3><form:label class="label" path="dmlChanges" ><spring:message code="label.dmlChanges"/></form:label></h3>
+            <form:textarea class="textarea" cols="80" rows="10" path="dmlChanges"/>
+		</li>
+        <li>
+        	<h3><form:label class="label" path="comments" ><spring:message code="label.comments"/></form:label></h3>
+            <form:textarea class="textarea" cols="80" rows="10" path="comments"/>
+		</li>
+	</ul>
+    <p>
+        <button type="submit" class="action" value=""><spring:message code="label.addIssue"/></button>
+        <button type="reset" class="right">Reset</button>
+    </p>
 </form:form>
- 
-     
-<h3>Contacts</h3>
-<c:if  test="${!empty contactList}">
-<table class="data">
-<tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Telephone</th>
-    <th>&nbsp;</th>
-</tr>
-<c:forEach items="${contactList}" var="contact">
-    <tr>
-        <td>${contact.lastname}, ${contact.firstname} </td>
-        <td>${contact.email}</td>
-        <td>${contact.telephone}</td>
-        <td><a href="delete/${contact.id}">delete</a></td>
-    </tr>
-</c:forEach>
-</table>
-</c:if>
- 
-</body>
-</html>
+</article>
+<footer>
+</footer>

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 
@@ -16,10 +17,10 @@ public class Issue {
     @GeneratedValue
     private Integer id;
      
-    @Column(name="NAME")
+    @Column(name="NM")
     private String name;
  
-    @Column(name="NUMBER")
+    @Column(name="NUM")
     private String number;
  
     @Column(name="DESCRIPTION")
@@ -28,11 +29,11 @@ public class Issue {
     @Column(name="COMMENTS")
     private String comments;
     
-    @Column(name="DDL")
-    private String DdlChanges;
+    @Column(name="DDLS")
+    private String ddlChanges;
     
-    @Column(name="DML")
-    private String DmlChanges;
+    @Column(name="DMLS")
+    private String dmlChanges;
 
 	public Integer getId() {
 		return id;
@@ -75,19 +76,19 @@ public class Issue {
 	}
 
 	public String getDdlChanges() {
-		return DdlChanges;
+		return ddlChanges;
 	}
 
 	public void setDdlChanges(String ddlChanges) {
-		DdlChanges = ddlChanges;
+		this.ddlChanges = ddlChanges;
 	}
 
 	public String getDmlChanges() {
-		return DmlChanges;
+		return dmlChanges;
 	}
 
 	public void setDmlChanges(String dmlChanges) {
-		DmlChanges = dmlChanges;
+		this.dmlChanges = dmlChanges;
 	}
     
     

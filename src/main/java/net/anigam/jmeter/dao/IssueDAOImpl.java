@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import net.anigam.jmeter.form.Issue;
 
-@Repository
+@Repository("issueDao")
 public class IssueDAOImpl implements IssueDAO	 {
 
 	@Autowired
@@ -20,8 +20,7 @@ public class IssueDAOImpl implements IssueDAO	 {
 	}
 
 	public List<Issue> listIssues() {
-		return sessionFactory.getCurrentSession().createQuery("from Contact")
-                .list();
+		return sessionFactory.getCurrentSession().createQuery("FROM Issue").list();
 	}
 
 	public void removeIssue(Integer id) {
