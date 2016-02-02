@@ -35,7 +35,7 @@ public class IssueController {
         map.put("issueList", issueService.listIssues());
         try {
             URL url = new URL ("https://provenir.atlassian.net/rest/api/latest/issue/CL-3030?expand=names,renderedFields");
-            byte[] encoding = Base64.encodeBase64("abhishekni:Kamayani1!".getBytes());
+            byte[] encoding = Base64.encodeBase64("abhishekni:amayani1!".getBytes());
             String authStringEnc = new String(encoding);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
